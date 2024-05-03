@@ -2,7 +2,7 @@ export const Nav = () => {
   const getInputValue = (e) => {
     const getInputValue = document.querySelector(".search-inp");
 
-    console.log(e.currentTarget.value);
+    // console.log(e.currentTarget.value);
   };
 
   return (

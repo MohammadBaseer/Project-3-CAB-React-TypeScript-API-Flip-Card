@@ -1,13 +1,14 @@
 import { Card } from "../cardDesign/Card";
 
-export const Home = () => {
 
-
+export const Home = (props) => {
 
   return (
     <>
 
+    
 <Card/>
+
     </>
   );
 };

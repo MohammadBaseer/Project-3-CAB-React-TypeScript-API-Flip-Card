@@ -1,4 +1,4 @@
-import ApiData from "../apiData/ApiData";
+import ApiData from "../../apiData/ApiData";
 import Modal from "./Modal";
 
 export const Card = (props) => {
@@ -20,15 +20,36 @@ const openModal = (event) => {
   modal.style.display = "flex";
 };
 
+// This Variable data come form Nav Page to Get the search INPUT value
 const SearchValue = props.getVlaue.trim();
-  return (
-    <div className="item-box">
 
-      {ApiData.results
-      .filter(data => data.name && data.name.toLowerCase().trim().includes(SearchValue)).map((data, index) => {
+  return (          
+    <>
+    
+    <div className="item-box">
+      
+
+
+      {ApiData.results.filter(data => data.name && data.name.toLowerCase().trim().includes(SearchValue)).map((data, index) => {
+
+
+
+        // {ApiData.length === 0? (
+        //   <p>Sorry, no results found.</p>
+        // ) : (
+        //   <p>hi</p>
+        // )}
+
+        
+   
+        
         return (
-         <>
-            <div className="item" >
+       <>   
+
+        
+
+
+            <div className="item">
               <div className="card-inner">
                 <div className="card-front">
                   <img className="item-image" src={data.image} alt="Photo" key={index}/>
@@ -47,5 +68,6 @@ const SearchValue = props.getVlaue.trim();
 
      <Modal/>
     </div>
+    </>
   );
 };

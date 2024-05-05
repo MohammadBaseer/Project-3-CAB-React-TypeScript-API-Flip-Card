@@ -118,3 +118,16 @@ p {
 .model-elment button {
   padding: 15px;
 }
+
+.paging{
+  width: 20%;
+  margin: auto; 
+}
+.paging > div{
+  display: flex;
+  justify-content: space-around;
+}
+.paging-btn{
+  padding: 10px;
+  font-size: 2rem;
+}

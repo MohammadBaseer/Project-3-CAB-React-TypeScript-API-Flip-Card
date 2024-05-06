@@ -1,5 +1,5 @@
 // import ApiData from "../../apiData/ApiData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "./Modal";
 
 export const Card = (props) => {
@@ -9,7 +9,6 @@ export const Card = (props) => {
 
     const itemId = event.currentTarget.getAttribute("id");
     const data = ApiData.results.find((data) => data.id.toString() === itemId);
-    // console.log(data);
 
     const modalContaint = document.querySelector(".modal");
     const modalTitle = modalContaint.querySelector(".title h1");
@@ -25,45 +24,45 @@ export const Card = (props) => {
   };
   // Thi Props recicved Data from APiFetch Page
   const ApiData = props.apiData;
-  // console.log(ApiData)
+
   // This Variable data come form Nav Page to Get the search INPUT value
   const SearchValue = props.getVlaue.trim();
-  // Next and Prev Buttons Handler
 
-// ========================================= Start
+  // Next and Prev Buttons Handler
+  // ========================================= Start
   const [page, setPage] = useState(1);
 
   function next() {
     let i = page;
-    setPage(++i); 
-    console.log(`Function has been called ${i} time(s).`);
+    setPage(++i);
     props.setNextPage(i);
-
-
-const apiDataPageNumber = ApiData.info.pages;
+    const apiDataPageNumber = ApiData.info.pages;
     if (i >= apiDataPageNumber) {
-      console.log('Reached the page value.');
-        document.querySelector(".nextBtn").style.display = "none" ;
+      document.querySelector(".nextBtn").setAttribute("disabled", "");
     }
-
-      
-    
+    document.querySelector(".prevtBtn").removeAttribute("disabled", "");
   }
 
+  // ================== End
 
-// ================== End
   const prev = () => {
-    props.setNextPage((prevValue) => {
-      console.log("Previous Value:", prevValue);
-      if (prevValue === 1) {
-        console.log("Previous value is 1");
-      } else {
-        console.log("Previous value is not 1");
-      }
-      return prevValue - 1;
-    });
-    document.querySelector(".nextBtn").style.display = "block" ;
+    let i = page;
+    setPage(--i);
+    props.setNextPage(i);
+
+    const apiDataPageNumber = ApiData.info.pages;
+    if (i === 1) {
+      document.querySelector(".prevtBtn").setAttribute("disabled", "");
+    }
+    document.querySelector(".nextBtn").removeAttribute("disabled", "");
   };
+
+  useEffect(() => {
+    if (page === 1) {
+      document.querySelector(".prevtBtn").setAttribute("disabled", "");
+    }
+  }, [page]);
+
   return (
     <>
       <div className="item-box">
@@ -106,7 +105,7 @@ const apiDataPageNumber = ApiData.info.pages;
       </div>
       <div className="paging">
         <div>
-          <button className="paging-btn" onClick={prev}>
+          <button className="paging-btn prevtBtn" onClick={prev}>
             {"<"}
           </button>
           <button className="paging-btn nextBtn" onClick={next}>

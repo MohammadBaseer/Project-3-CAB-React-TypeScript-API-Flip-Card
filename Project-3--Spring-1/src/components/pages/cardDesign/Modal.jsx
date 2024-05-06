@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react";
 
 function Modal() {
-    // -------------
-const closeModal = () => {
+  // -------------
+  const closeModal = () => {
     const modal = document.getElementById("myModal");
     modal.style.display = "none";
   };
@@ -15,28 +15,28 @@ const closeModal = () => {
   };
   // ---------------
   return (
-      <>
+    <>
       {/* model Card */}
- <div id="myModal" className="modal model-card">
- <div className="model-inner">
-   <div className="model-front">
-     <div className="title">
-       <h1>Title</h1>
-     </div>
-     <img className="model-image" src="{data.image}" alt="Photo" />
-     <div className="model-elment">
-       <p className="species">Name</p>
-       <p className="status">Title</p>
-       <button className="close" onClick={closeModal}>
-         Cloes
-       </button>
-     </div>
-   </div>
- </div>
-</div>
-{/* End Model card */}
-</>
-  )
+      <div id="myModal" className="modal model-card">
+        <div className="model-inner">
+          <div className="model-front">
+            <div className="title">
+              <h1>Title</h1>
+            </div>
+            <img className="model-image" src="{data.image}" alt="Photo" />
+            <div className="model-elment">
+              <p className="species">Name</p>
+              <p className="status">Title</p>
+              <button className="close" onClick={closeModal}>
+                Cloes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* End Model card */}
+    </>
+  );
 }
 
-export default Modal
+export default Modal;

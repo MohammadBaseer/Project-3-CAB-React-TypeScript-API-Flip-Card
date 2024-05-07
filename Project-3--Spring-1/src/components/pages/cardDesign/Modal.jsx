@@ -5,6 +5,7 @@ function Modal() {
   const closeModal = () => {
     const modal = document.getElementById("myModal");
     modal.style.display = "none";
+    setIsopen(false)
   };
   // -------------
   window.onclick = function (event) {
@@ -17,7 +18,8 @@ function Modal() {
   return (
     <>
       {/* model Card */}
-      <div id="myModal" className="modal model-card">
+      <div id="myModal" className="modal model-card" >
+     
         <div className="model-inner">
           <div className="model-front">
             <div className="title">

@@ -1,69 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 
-export const ApiFetch =  (props) =>{
+export const ApiFetch = (props) => {
+  const getDataFromApi = async () => {
+    const url = `https://rickandmortyapi.com/api/character/?page=${props.nextPage}&name=${props.getVlaue}`;
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const apiData = data;
+      props.setApiDataInfoPageNo(apiData.info.pages);
+      if (apiData.results.length > 0) {
+        props.setApiData(apiData.results);
+      } 
+    } catch (err) {
+      console.log("Error======Error----------------------------- ", err);
+      props.setApiData(null);
+    }
+  };
 
-        const getDataFromApi = async () => {
-            // spinner("block");
 
-            
-            const url = `https://rickandmortyapi.com/api/character/?page=${props.nextPage}`;
-          
-            try {
-              const res = await fetch(url);
-              const data = await res.json();
-              // console.log(data);
-              const apiData = data;
-              props.setApiData(apiData);
-            //   console.log(apiData.results)
-            //   controller(apiData);
-            //   spinner("none");
-            } catch (err) {
-              console.log(err);
-            //   msg(err);
-            //   spinner("none");
-          
-            }
-          };
-
-useEffect(() => {
+  useEffect(() => {
     getDataFromApi();
-
-}, [props.nextPage])
-
-
+  }, [props.nextPage, props.getVlaue]);
 
   return null;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// export const ApiFetch = async () => {
-//     spinner("block");
-//     const url = "https://rickandmortyapi.com/api/character/?page=1";
-  
-//     try {
-//       const res = await fetch(url);
-//       const data = await res.json();
-//       // console.log(data);
-//       const apiData = data;
-//       controller(apiData);
-//       spinner("none");
-//     } catch (err) {
-//       // console.log(err);
-//       msg(err);
-//       spinner("none");
-  
-//     }
-//   };
+};

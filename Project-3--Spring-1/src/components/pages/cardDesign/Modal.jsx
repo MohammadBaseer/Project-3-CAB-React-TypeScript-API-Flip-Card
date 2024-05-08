@@ -1,42 +1,38 @@
-import React from "react";
 
-function Modal() {
-  // -------------
-  const closeModal = () => {
-    const modal = document.getElementById("myModal");
-    modal.style.display = "none";
-    setIsopen(false)
+function Modal({modalIsOpen, setModalIsOpen, data }) {
+
+   const closeModal = () => {
+    setModalIsOpen(false)
   };
   // -------------
-  window.onclick = function (event) {
-    const modal = document.getElementById("myModal");
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
+  // window.onclick = function(event) {
+  //   var modal = document.getElementById("myModal");
+  //   if (event.target == modal) {
+  //     setModalIsOpen(false)
+  //   }
+    // console.log(modalIsOpen)
+  // };
   // ---------------
   return (
     <>
-      {/* model Card */}
-      <div id="myModal" className="modal model-card" >
-     
-        <div className="model-inner">
-          <div className="model-front">
-            <div className="title">
-              <h1>Title</h1>
-            </div>
-            <img className="model-image" src="{data.image}" alt="Photo" />
-            <div className="model-elment">
-              <p className="species">Name</p>
-              <p className="status">Title</p>
-              <button className="close" onClick={closeModal}>
-                Cloes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* End Model card */}
+            <div id="myModal" className="modal model-card" style={modalIsOpen === true ? {display: 'flex'} : {display: 'none'}} >
+
+<div className="model-inner">
+  <div className="model-front">
+    <div className="title">
+      <h1>{data.name}</h1>
+    </div>
+    <img className={"model-image"} src={data.image} alt="Photo" />
+    <div className="model-elment">
+      <p className="species">{data.species}</p>
+      <p className="status">{data.status}</p>
+      <button className="close" onClick={closeModal}>
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+</div>
     </>
   );
 }

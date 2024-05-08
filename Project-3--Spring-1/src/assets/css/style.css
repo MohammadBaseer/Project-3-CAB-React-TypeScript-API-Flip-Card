@@ -82,9 +82,14 @@ input {
 .more-btn:hover {
   background-color: rgb(253, 192, 202);
 }
-.model-card {
-  display: none;
+.error{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.model-card {
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   padding-top: 100px; /* Location of the box */

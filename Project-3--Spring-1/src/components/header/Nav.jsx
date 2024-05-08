@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Nav = (props) => {
+export const Nav = ({setValue}) => {
   const handlerInput = (e) => {
     const inputValue = e.target.value;
-    props.setValue(inputValue);
+    setValue(inputValue);
   };
   return (
     <>
